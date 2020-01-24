@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Medication: {{ medication.name }}</h1>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Log Entries</h4>
+
+    {% for entry in object.medlogentry_set.all %}
+      <hr>
+      <p >
+      <li>{{ entry.med_time }} {{entry.med_dose}} {{entry.med_dose_unit}}</li>
+      </p>
+    {% endfor %}
+  </div>
+{% endblock %}

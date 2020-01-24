@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Mood Log entries</h1>
+  {% if moodlogentry_list %}
+  <ul>
+    {% for entry in moodlogentry_list %}
+      
+        <a  href="{% url 'mood-log-detail' entry.pk %}"> {{entry.mood_date}} {{entry.mood_score}} {{entry.bp_phase}}</a>
+        <a href="{% url 'mood-log-delete' entry.pk %}">Delete</a>
+      <a href="{% url 'mood-log-update' entry.pk %}">Update</a>
+      <br>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no log entries for mood.</p>
+  {% endif %}       
+{% endblock %}

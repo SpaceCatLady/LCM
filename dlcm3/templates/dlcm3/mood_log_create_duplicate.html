@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+{% if duplicate %}
+
+	<a> <div class="alert alert-danger">
+                <strong>Entry for date already exists</strong>
+            </div></a> 
+{% endif %}
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+  </form>
+
+  <a href="{% url 'mood-log'%}">Mood logs</a>
+{% endblock %}

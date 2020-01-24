@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Medicine Log</h1>
+  {% if MedicineLog_list %}
+  <ul>
+    {% for med in MedicineLog_list %}
+      <li>
+        <a>Just adding some text here</a>
+        <a href="{{ MedicineLog.get_absolute_url }}">{{ MedicineLog.med_time }}</a> ({{MedicineLog.med_name}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no entries in the log.</p>
+  {% endif %}       
+{% endblock %}

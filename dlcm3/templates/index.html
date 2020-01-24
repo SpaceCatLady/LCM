@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Life Chart Method Home</h1>
+  <p>Welcome to the life chart method log, a website developed by <em>SpaceCatLady</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>The logs have the following record counts:</p>
+  <ul>
+    <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+    <li><strong>Medications:</strong> {{ num_meds }}</li>
+    <li><strong>Log Entries:</strong> {{ num_entries }}</li>
+  </ul>
+{% endblock %}

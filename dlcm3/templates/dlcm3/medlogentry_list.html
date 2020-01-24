@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Medication Log entries</h1>
+  {% if medlogentry_list %}
+  <ul>
+    {% for entry in medlogentry_list %}
+    <table style="width:50%">
+  <tr>
+    <td><a  href="{% url 'med-log-detail' entry.pk %}"> {{entry.med_time}} {{entry.med_dose}} {{entry.med_dose_unit}}{{entry.med}}</a></td>
+    <td><a href="{% url 'med-log-update' entry.pk %}">Edit</a></td>
+    <td><a href="{% url 'med-log-delete' entry.pk %}">Delete</a></td>
+
+  </tr>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no log entries for medication.</p>
+  {% endif %}       
+{% endblock %}

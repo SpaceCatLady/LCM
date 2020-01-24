@@ -1,0 +1,10 @@
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+
+
+    <li>{{selected_choice.vote}}--{{selected_choice.vote}} </li>
+
+</ul>
+
+<a href="{% url 'dlcm:detail' question.id %}">Vote again?</a>

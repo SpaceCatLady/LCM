@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Delete Med Log Entry</h1>
+
+<p>Are you sure you want to delete the log entry: <br>
+	{{ medlogentry.med_time }}{{ medlogentry.med_dose }}{{ medlogentry.med_dose_unit }}{{ medlogentry.med_id }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Yes, delete.">
+</form>
+
+{% endblock %}
