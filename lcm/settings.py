@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '60l@weim@9j^n&qcy8pa8$js5&d)oe&11hw43@!mnkwqi#*_8$'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '60l@weim@9j^n&qcy8pa8$js5&d)oe&11hw43@!mnkwqi#*_8$')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = []
 
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'CET'
 
 USE_I18N = True
 
@@ -124,3 +124,6 @@ STATIC_URL = '/static/'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/dlcm3/'
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
