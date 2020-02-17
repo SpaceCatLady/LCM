@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Medication, Unit, MedLogEntry, MoodLogEntry, Severity
+from .models import Medication, Unit, MedLog, MoodLog, Severity
 
 # Register your models here.
 
@@ -12,7 +12,7 @@ class MedLogAdmin(admin.ModelAdmin):
     def med_dose_unit_name(self, obj):
         return obj.med_dose_unit.med_dose_unit_name
 
-admin.site.register(MedLogEntry, MedLogAdmin)
+admin.site.register(MedLog, MedLogAdmin)
 
 @admin.register(Unit)
 class UnitAdmin(admin.ModelAdmin):
@@ -33,4 +33,4 @@ class SeverityAdmin(admin.ModelAdmin):
 class MoodLogAdmin(admin.ModelAdmin):
     list_display = ['mood_date' , 'bp_phase', 'other_symp', 'mood_score', 'msw_count', 'life_event', 'life_event_effect' , 'hosp_adm']
 
-admin.site.register(MoodLogEntry, MoodLogAdmin)
+admin.site.register(MoodLog, MoodLogAdmin)

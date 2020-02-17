@@ -4,8 +4,8 @@ from . import views
 urlpatterns = [
 	path('', views.index, name = 'index'),
 	path('meds/', views.MedicationListView.as_view(), name = 'meds'),
-	path('medlog/', views.MedLogEntryListView.as_view(), name = 'med-log'),
-	path('moodlog/', views.MoodLogEntryListView.as_view(), name = 'mood-log'),
+	path('medlog/', views.MedLogListView.as_view(), name = 'med-log'),
+	path('moodlog/', views.MoodLogListView.as_view(), name = 'mood-log'),
 	path('meds/<int:pk>', views.MedDetailView.as_view(), name = 'med-detail'),
 	path('meds/create/', views.MedCreate.as_view(), name='meds-create'),
 	path('meds/<int:pk>/update/', views.MedUpdate.as_view(), name='meds-update'),

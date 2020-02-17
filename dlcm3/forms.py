@@ -3,11 +3,12 @@ from datetime import datetime
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from dlcm3.models import Medication, Unit, Severity, YesNoAnswer
+
     
 class MedLogForm(forms.Form):
 
     med_time = forms.SplitDateTimeField(
-        help_text="Select date and time.",
+        help_text='Select date and time.',
         initial = datetime.now)
     med_id = forms.ModelChoiceField(
         queryset=Medication.objects.all())
@@ -26,7 +27,7 @@ class MoodLogForm(forms.Form):
 
     mood_date = forms.DateField(
         initial = datetime.today,
-        help_text = 'Select Date',
+        help_text = 'Select date',
         )
     sleep_hours = forms.DecimalField(
         max_digits = 4,

@@ -16,6 +16,7 @@ class Medication(models.Model):
 
     class Meta:
         unique_together = [['name', 'user_id']]
+        ordering = ['name']
     
     def __str__(self):
         return self.name
@@ -30,26 +31,20 @@ class Unit(models.Model):
         verbose_name = 'Medication units')
     def __str__(self):
         return self.name
+
 class YesNoAnswer(models.Model):
     code = models.CharField(
         max_length = 5)
     desc = models.CharField(
         max_length = 20)
-    """
-    def get_abosulte_url(self):
-        # returns a url to access a particular log entry
-        return reverse('severity', args = [str(self.id)])
-    """
     def __str__(self):
         #String for representing the Model object.
         return f'{self.code}'
 
-class MedLogEntry(models.Model):
+class MedLog(models.Model):
     user = models.ForeignKey(
         User,
-        on_delete=models.SET_NULL, 
-        null=True, 
-        blank=True)
+        on_delete=models.CASCADE)
     med_time = models.DateTimeField(
         help_text = 'Enter date and time of intake',
         default=date.today)
@@ -76,12 +71,11 @@ class MedLogEntry(models.Model):
 
     def get_absolute_url(self):
         #Returns the url to access a particular log entry
-        return reverse('meds-log', args=[str(self.id)])
+        return reverse('med-log-detail', args=[str(self.id)])
 
     def __str__(self):
         #String for representing the Model object.
-        return f'{self.user}{self.med_time} {self.med_dose} {self.med_id.name} {self.med_dose_unit.name} {self.med_comment}'
-
+        return f'{self.user} {self.med_time} {self.med_dose} {self.med_id.name} {self.med_dose_unit.name} {self.med_comment}'
 
 class Severity(models.Model):
     name = models.CharField(
@@ -99,7 +93,7 @@ class Severity(models.Model):
         #String for representing the Model object.
         return f'{self.name}'
 
-class MoodLogEntry(models.Model):
+class MoodLog(models.Model):
     user = models.ForeignKey(
         User, 
         on_delete=models.SET_NULL, 
@@ -157,7 +151,8 @@ class MoodLogEntry(models.Model):
         ordering = ['-mood_date']
 
     def get_absolute_url(self):
-        return reverse('mood-log', args = [str(self.id)])
+        return reverse('mood-log-detail', args = [str(self.id)])
 
     def __str__(self):
         return f'{self.user}{self.mood_date,} {self.bp_phase} {self.other_symp} {self.mood_score} {self.msw_count} {self.life_event}{self.life_event_effect} {self.hosp_adm} {self.weight} {self.sleep_hours} {self.period}'
+

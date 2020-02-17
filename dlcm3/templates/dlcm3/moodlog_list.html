@@ -2,8 +2,8 @@
 
 {% block content %}
   <h1>Mood Log entries</h1>
-   {% if moodlogentry_list %}
-       {% for entry in moodlogentry_list %}
+   {% if moodlog_list %}
+       {% for entry in moodlog_list %}
     <table style="width:50%">
   <tr>
     <td><a  href="{% url 'mood-log-detail' entry.pk %}"> {{entry.mood_date}} {{entry.mood_score}} {{entry.bp_phase}}</a></td>

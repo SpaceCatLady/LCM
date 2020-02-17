@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Med Log Entry : </h1>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>{{medlog.med_date}}</h4>
+    <hr>
+      <p >
+      <li>time medication taken:   {{medlog.med_time }}</li>
+      <li>medication:   {{medlog.med }}</li>
+      <li>dose:   {{medlog.med_dose }} {{medlog.med_dose_unit}}</li>
+      <li>comment:   {{medlog.med_comment }}</li>
+
+      <a href="{% url 'med-log-delete' medlog.pk %}">Delete</a><br>
+      <a href="{% url 'med-log-update' medlog.pk %}">Update</a>
+      </p>
+
+  </div>
+{% endblock %}

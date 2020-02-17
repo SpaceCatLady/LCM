@@ -2,9 +2,9 @@
 
 {% block content %}
   <h1>Medication Log entries</h1>
-  {% if medlogentry_list %}
+  {% if medlog_list %}
   <ul>
-    {% for entry in medlogentry_list %}
+    {% for entry in medlog_list %}
     <table style="width:50%">
   <tr>
     <td><a  href="{% url 'med-log-detail' entry.pk %}"> {{entry.med_time}} {{entry.med_dose}} {{entry.med_dose_unit}}{{entry.med}}</a></td>

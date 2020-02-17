@@ -5,7 +5,7 @@
 <h1>Delete Med Log Entry</h1>
 
 <p>Are you sure you want to delete the log entry: <br>
-	{{ medlogentry.med_time }}{{ medlogentry.med_dose }}{{ medlogentry.med_dose_unit }}{{ medlogentry.med_id }}?</p>
+	{{ medlog.med_time }}{{ medlog.med_dose }}{{ medlog.med_dose_unit }}{{ medlog.med_id }}?</p>
 
 <form action="" method="POST">
   {% csrf_token %}
